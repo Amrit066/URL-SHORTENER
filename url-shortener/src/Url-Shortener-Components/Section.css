@@ -34,3 +34,35 @@ h3{
     margin-left: 10px;
     width: 18%;
 }
+
+/* CSS FOR INFO-SECTION */
+
+.info-section{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 7% 10px;
+    background-color: rgba(174, 243, 218, 0.233);
+}
+.info-section>.left-content{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 5px;
+    padding-left: 20px;
+    font-size: 30px;
+}
+.info-section>.right-content{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 5px;
+}
+.info-section>.right-content>img{
+    width: 90%;
+    border-radius: 10px;
+}
