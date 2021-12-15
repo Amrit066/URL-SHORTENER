@@ -1,0 +1,31 @@
+footer{
+    width: 100%;
+    background-color: aquamarine;
+}
+footer>.icon-container{
+    width: 100%;
+    padding: 30px 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+footer>.icon-container>a{
+    text-decoration: none;
+    color: rgb(122, 15, 184);
+}
+footer>.icon-container>a:hover{
+    cursor: pointer;
+    color: rgba(9, 131, 231, 0.52);
+}
+footer>.icon-container>a>svg{
+    width: 40px;
+    height: 40px;
+}
+
+footer>.copyright{
+    width: 100%;
+    padding: 20px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
