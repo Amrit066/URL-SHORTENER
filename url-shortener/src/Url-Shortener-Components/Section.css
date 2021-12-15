@@ -1,0 +1,36 @@
+
+.url-field-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6% 0;
+    background-color: rgba(137, 248, 211, 0.329);
+}
+h3{
+    padding: 4% 0;
+}
+
+.top-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 5px;
+}
+.url-field-container{
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5px;
+}
+.url-input{
+    width: 80%;
+}
+.create-btn{
+    margin-left: 10px;
+    width: 18%;
+}
