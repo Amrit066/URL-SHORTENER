@@ -1,0 +1,161 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.profile-url-field-container{
+    width: 100%;
+    background-color: rgba(127, 255, 212, 0.52);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 10px;
+}
+.profile-url-field-container>.left-container{
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(18, 248, 179);
+    border-radius: 10px;
+}
+.profile-url-field-container>.left-container>.left-content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+.profile-url-field-container>.left-container>.left-content>.profile-box{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 2px dashed rgb(158, 214, 197);
+}
+.profile-url-field-container>.left-container>.left-content>.profile-box>.profile{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid red;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.profile-url-field-container>.left-container>.left-content>.profile-box>.profile>img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.profile-url-field-container>.left-container>.left-content>.profile-box>.name{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-url-field-container>.left-container>.left-content>.statistics{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+    margin: 10px 0;
+    border-radius: 30px;
+}
+.profile-url-field-container>.left-container>.left-content>.statistics:hover{
+    cursor: pointer;
+    background-color: rgb(158, 214, 197);
+    transition: 0.5s;
+}
+.profile-url-field-container>.left-container>.left-content>.statistics>p{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0.5px;
+}
+.profile-url-field-container>.left-container>.left-content>.button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+    margin: 10px 0;
+    border-radius: 30px;
+}
+.profile-url-field-container>.right-container{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    /* padding: 10px 5px; */
+}
+.profile-url-field-container>.right-container>h4{
+   width: 90%;
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+   align-items: center; 
+   padding: 40px 5px;
+}
+.profile-url-field-container>.right-container>.url-field-container{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5px;
+}
+.profile-url-field-container>.right-container>.url-field-container>.url-input{
+    width: 80%;
+}
+.profile-url-field-container>.right-container>.url-field-container>.create-btn{
+    margin-left: 10px;
+    width: 18%;
+}
+
+
+/* CSS FOR AddURL */
+.url-details-container{
+    width: 100%;
+    padding: 40px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(102, 252, 202, 0.151);
+}
+.url-details-container>.heading{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgba(172, 196, 188, 0.52);
+    padding: 15px 5px;
+    border-radius: 30px;
+}
+.url-details-container>.heading>.title{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    letter-spacing: 0.4px;
+}
+.url-details-container>.add-url{
+    width: 100%;
+}
+
+
+/* CSS FOR FOOTER */
+.footer{
+    position: relative;
+    top: 100%;
+    left: 0;
+    width: 100%;
+}
+
