@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 
 dotenv.config({path:'./config/config.env'});
 
-const db = process.env.DATABASE;
+const db = process.env.DATABASEURIZ;
 
 mongoose.connect(db, {
     useNewUrlParser : true,

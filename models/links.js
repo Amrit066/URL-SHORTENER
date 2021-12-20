@@ -9,6 +9,11 @@ const linkSchema =  new mongoose.Schema({
 
     },
 
+    urlCode:
+    {
+        type: String
+    },
+
     shortURL:
     {
         type: String

@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const authenticate = require("../middleware/authenticate");
 
 
-require("../config/db");
+require("../Databases/db");
 
 
 router.get('/', (req,res)=>
@@ -131,25 +131,37 @@ router.post("/login",async (req, res)=>
 // -------------------------------URL Shortener---------------------------------------------------- //
 
 
-router.post("/sLink", authenticate ,async (req, res)=>
+app.post("/sLink", authenticate ,async (req, res)=>
 {
-    urlCode=shortid.generate();
+    const baseURL = config.get('baseURL')
+    const urlCode=shortid.generate();
     try
     {
+        const urlIsThere = await Lunks.findOne({longURL: req.body.url});
+
+        if(urlIsThere)
+        {
+            res.status(201).send("Url Already Exist");
+        }
+        else
+        {
+            const insert = new Lunks({
+                user:req.rootUser.email,
+                longURL: req.body.url,
+                urlCode: urlCode,
+                shortURL: baseURL+urlCode,
+            })
+            const doneLink = await insert.save();
+            res.status(201).render("shortener");
+        }
         
-        const insert = new Lunks({
-            user:req.rootUser.email,
-            longURL: req.body.url,
-            shortURL: urlCode,
-        })
-        const doneLink = await insert.save();
-        res.status(201).render("shortener");
+        
 
     }
     catch(err)
     {
         console.log(err);
-        res.status(404).send("404");
+        res.status(500).send("500");
     }
 
 })
@@ -195,5 +207,34 @@ router.get('/logout', authenticate ,async (req,res)=>
 
 
 // ------------------------------------------------------------------------------------------------//
+
+// -------------------------Re-Direct------------------------------------------------------------//
+
+router.get('/:code', async (req, res)=>
+{
+    try{
+
+        const rdUrl = await Lunks.findOne({urlCode: req.params.code});
+
+        if(rdUrl)
+        {
+            res.redirect(rdUrl.longURL);
+        }
+        else
+        {
+            res.status(404).send("Not a valid URL");
+        }
+
+    }
+    catch(err)
+    {
+        console.log(err);
+        res.status(500).send("Oops");
+    }
+})
+
+
+
+// -----------------------------------------------------------------------------------------------//
 
 module.exports = router;
