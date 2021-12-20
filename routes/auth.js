@@ -163,4 +163,37 @@ router.post("/sLink", authenticate ,async (req, res)=>
 
 // ----------------------------------------------------------------------------------------------- //
 
+
+
+
+
+// ---------------------------------Log Out--------------------------------------------------------//
+
+router.get('/logout', authenticate ,async (req,res)=>
+{
+    try
+    {
+        req.rootUser.tokens = req.rootUser.tokens.filter((curr)=>
+        {
+            return curr.token !== req.token;
+        });
+
+        res.clearCookie("jwtoken");
+
+        await req.rootUser.save();
+        
+        res.render("index");
+
+    }
+    catch(err)
+    {
+        console.log(err);
+        res.status(500).send("Error!");
+    }
+})
+
+
+
+// ------------------------------------------------------------------------------------------------//
+
 module.exports = router;

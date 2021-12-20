@@ -16,7 +16,6 @@ app.set("view engine", "ejs");
 
 // app.use(require('./routes/auth'));
 
-
 const port = process.env.PORT || 3000 ;
 app.use(cookieParser())
 app.use(express.json());
@@ -181,6 +180,35 @@ app.post("/sLink", authenticate ,async (req, res)=>
 
 
 // ----------------------------------------------------------------------------------------------- //
+
+// ---------------------------------Log Out--------------------------------------------------------//
+
+app.get('/logout', authenticate ,async (req,res)=>
+{
+    try
+    {
+        req.rootUser.tokens = req.rootUser.tokens.filter((curr)=>
+        {
+            return curr.token !== req.token;
+        });
+
+        res.clearCookie("jwtoken");
+
+        await req.rootUser.save();
+        
+        res.render("index");
+
+    }
+    catch(err)
+    {
+        console.log(err);
+        res.status(500).send("Error!");
+    }
+})
+
+
+
+// ------------------------------------------------------------------------------------------------//
 
 
 
