@@ -82,8 +82,8 @@ router.post("/login",async (req, res)=>
 {
     try
     {
-        const emailId = req.body.Emails;
-        const password = req.body.Passwords;
+        const emailId = req.body.emails;
+        const password = req.body.passwords;
 
         // console.log(emailId);
         // console.log(password);
@@ -147,7 +147,7 @@ router.post("/sLink", authenticate ,async (req, res)=>
     const urlCode=shortid.generate();
     try
     {
-        const urlIsThere = await Lunks.findOne({oURL: req.body.url});
+        const urlIsThere = await Lunks.findOne({oUrl: req.body.url});
 
         if(urlIsThere)
         {
@@ -157,7 +157,7 @@ router.post("/sLink", authenticate ,async (req, res)=>
         {
             const insert = new Lunks({
                 user:req.rootUser.email,
-                oURL: req.body.url,
+                oUrl: req.body.url,
                 urlCode: urlCode,
                 shortURL: baseURL+urlCode,
             })
@@ -227,7 +227,7 @@ router.get('/:code', async (req, res)=>
         {
             rdUrl.clicks ++;
             await rdUrl.save();
-            res.redirect(rdUrl.longURL);
+            res.redirect(rdUrl.oUrl);
         }
         else
         {
