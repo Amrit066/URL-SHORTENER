@@ -33,7 +33,7 @@ You can see your short links(if any) on the dashboard or you can create your own
 
 ## Homepage
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
 
 ## User Registration 
 
