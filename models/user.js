@@ -9,6 +9,10 @@ const userSchema = new mongoose.Schema(
         {
             type: String
         },
+        mobile:
+        {
+            type: Number
+        },
         email:
         {
             type:String
@@ -16,6 +20,11 @@ const userSchema = new mongoose.Schema(
         password:
         {
             type:String
+        },
+        reEnterPassword:
+        {
+            type: String
+
         },
         tokens:
         [
@@ -35,6 +44,7 @@ userSchema.pre('save', async function(next){
     if(this.isModified('password'))
     {
         this.password = await bcrypt.hash(this.password,12);
+        this.reEnterPassword = await bcrypt.hash(this.password,12);
     }
     next();
 })

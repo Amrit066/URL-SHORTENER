@@ -4,7 +4,7 @@ const linkSchema =  new mongoose.Schema({
     user:{
         type: String
     },
-    longURL:{
+    oURL:{
         type: String
 
     },

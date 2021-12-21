@@ -36,19 +36,29 @@ router.post('/register', async (req,res)=>{
         // console.log(req.body.Name);
         // console.log(req.body.Email);
 
-        if (await User.findOne({email:req.body.Email}))
+        if (await User.findOne({email:req.body.email}))
         {
             res.send("Please try to login, You are already registered.");
         }
         else
         {
-            const register = new User({
-                name:req.body.Name,
-                email:req.body.Email,
-                password:req.body.Password
-            })
-            const registered = await register.save();
-            res.status(201).render("index");
+            if(req.body.password===req.body.reEnterPassword)
+            {
+                const register = new User({
+                    name:req.body.name,
+                    mobile:req.body.mobile,
+                    email:req.body.email,
+                    password:req.body.password,
+                    reEnterPassword:req.body.reEnterPassword,
+                })
+                const registered = await register.save();
+                res.status(201).render("index");
+            }
+            else
+            {
+                res.send("Password and confirm password should be same!");
+            }
+            
 
         }
 
@@ -131,13 +141,13 @@ router.post("/login",async (req, res)=>
 // -------------------------------URL Shortener---------------------------------------------------- //
 
 
-app.post("/sLink", authenticate ,async (req, res)=>
+router.post("/sLink", authenticate ,async (req, res)=>
 {
     const baseURL = config.get('baseURL')
     const urlCode=shortid.generate();
     try
     {
-        const urlIsThere = await Lunks.findOne({longURL: req.body.url});
+        const urlIsThere = await Lunks.findOne({oURL: req.body.url});
 
         if(urlIsThere)
         {
@@ -147,7 +157,7 @@ app.post("/sLink", authenticate ,async (req, res)=>
         {
             const insert = new Lunks({
                 user:req.rootUser.email,
-                longURL: req.body.url,
+                oURL: req.body.url,
                 urlCode: urlCode,
                 shortURL: baseURL+urlCode,
             })
@@ -174,10 +184,6 @@ app.post("/sLink", authenticate ,async (req, res)=>
 
 
 // ----------------------------------------------------------------------------------------------- //
-
-
-
-
 
 // ---------------------------------Log Out--------------------------------------------------------//
 
@@ -207,6 +213,7 @@ router.get('/logout', authenticate ,async (req,res)=>
 
 
 // ------------------------------------------------------------------------------------------------//
+
 
 // -------------------------Re-Direct------------------------------------------------------------//
 
