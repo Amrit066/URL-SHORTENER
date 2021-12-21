@@ -218,6 +218,8 @@ router.get('/:code', async (req, res)=>
 
         if(rdUrl)
         {
+            rdUrl.clicks ++;
+            await rdUrl.save();
             res.redirect(rdUrl.longURL);
         }
         else
